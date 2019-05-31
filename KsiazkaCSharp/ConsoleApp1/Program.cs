@@ -113,6 +113,22 @@ namespace ConsoleApp1
                 Console.WriteLine(tablica[i]);
             }
             Console.ReadKey(); */ //ZADANIE 12.5
+            /*
+            int i = 0;
+            int j = 0;
+            int[] tablica = new int[10];
+            while (i < tablica.Length)
+            {
+                Console.WriteLine("podaj wartosc dla {0} tablicy", i + 1);
+                tablica[i] = int.Parse(Console.ReadLine());
+                i++;
+            }
+            while (j < tablica.Length)
+            {
+                Console.WriteLine("Tablica {0} wynosi {1}", j, tablica[j]);
+                j++;
+            }
+            Console.ReadKey(); */     // ZADANIE 12.6
         }
     }
 }
