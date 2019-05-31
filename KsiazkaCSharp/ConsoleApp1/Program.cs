@@ -88,27 +88,44 @@ namespace ConsoleApp1
                 Console.Write("{0} ", i);
             }
              */ // ZADANIE 11.5
-            
-            for (int i = 20; i >= 1; i--)
+                /*
+               int liczba = 20; // ZADANIE 11.6, wariant A na petli for
+               int wykladnik = 20;
+               for (int i=1;i<=20;i++)
+               {
+                   for (int j=liczba;j>=1;j--)
+                   {
+                       if (i == 20)
+                       {
+                           Console.WriteLine("20");
+                           continue; 
+                       }
+                       Console.Write(wykladnik--+" ");
+                   }
+                   liczba--;
+                   wykladnik = liczba;
+                   Console.WriteLine();
+               } */
+               /*
+            int liczba = 20; // WARIANT {B} / na petli while
+            int wykladnik = 20;
+            while (liczba > 0)
             {
-                int liczba = 20;
-                for (int j = 20; j >= 1; j--)
+                Console.Write(wykladnik + " ");
+                if (wykladnik == 1)
                 {
-                    for (int z =20;z>=1;z--)
-                    {
-                        Console.Write(liczba + " ");
-                    }
                     Console.WriteLine();
+                    wykladnik = liczba;
                     liczba--;
+
                 }
-                if (i == 1)
+                if (liczba == 0)
                 {
-                    Console.WriteLine();
                     Console.WriteLine("20");
-                }                    
-                else
-                    Console.WriteLine(); 
-            }
+                }
+                wykladnik--;
+            } */
+
             Console.ReadKey();
         }
     }
