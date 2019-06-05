@@ -111,16 +111,110 @@ namespace ConsoleApp1
             Console.WriteLine("x=" + p1.x);
             Console.WriteLine("y=" + p1.y);
             Console.ReadKey(); */
+
+    public class Punkt
+    {
+        public int x;
+        public int y;
+
+        public int PobierzX()
+        {
+            return x;
+        }
+        public int PobierzY()
+        {
+            return y;
+        }
+        public void UstawX(int wspX)
+        {
+            x = wspX;
+        }
+        public void UstawY(int wspY)
+        {
+            y = wspY;
+        }
+        public int UstawX(Punkt punkt)
+        {
+            x = punkt.x;
+            return x ;
+        }
+        public int UstawY(Punkt punkt)
+        {
+            y = punkt.y;
+            return y;
+        }
+        public void UstawXY(int wspX,int wspY)
+        {
+            x = wspX;
+            y = wspY;
+        }
+        public void UstawXY(Punkt punkt)
+        {
+            x=punkt.x;
+            y=punkt.y;
+        }
+        public void Wyswietl()
+        {
+            Console.WriteLine("Wspolrzedna x=" + x);
+            Console.WriteLine("wspolrzedna y=" + y); // ZADANIE 15.1/2/3
+        }
+    }
+    public class Dzialania
+    {
+        public int licznik; // ZADANIE 15.5 i 15.6
+        public int wynik;
+
+        public int Dodaj(int x,int y)
+        {
+            wynik = x;
+            x += y;
+            licznik = x;
+            return licznik;
+        }
+        public int Odejmij(int x,int y)
+        {
+            wynik = x;
+            x -= y;
+            licznik = x;
+            return licznik;
+        }
+        public void PrezentujWynik()
+        {
+            Console.WriteLine("Wynik działania algebraicznego to :{0} z kolei zadeklarowana wartość to {1}",licznik,wynik); // ZADANIE 15.4
+        }
+    }
     class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("argumenty wywolania");
-            for (int i = 0; i < args.Length; i++)
-            {
-                Console.WriteLine(args[i]);
-            }
+            Punkt p1 = new Punkt();
+            p1.UstawX(100);
+            p1.UstawY(100);
+            Punkt p2 = new Punkt();
+            p2.UstawX(200);
+            p2.UstawY(400);
+            Punkt p3 = new Punkt();
+            p3.UstawY(p2);
+            p3.UstawX(p1);
+            p1.Wyswietl();
+            Console.WriteLine();
+            p2.Wyswietl();
+            Console.WriteLine();
+            p3.Wyswietl();
+            Punkt p4 = new Punkt();
+            p4.UstawXY(p3);
+            Console.WriteLine();
+            p4.Wyswietl();
             Console.ReadKey();
+            Console.Clear();
+            Dzialania d1 = new Dzialania();
+            d1.Dodaj(5, 6);
+            d1.PrezentujWynik();
+            Console.WriteLine();
+            d1.Odejmij(6, 5);
+            d1.PrezentujWynik();
+            Console.ReadKey();
+
         }
         
     }
