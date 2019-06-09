@@ -20,7 +20,9 @@ namespace ConsoleApp1
             Console.WriteLine("|         |  |         |  |            ");
             Console.WriteLine("|         |  |---------/  \\---------/ "); */ //Zadanie 3.2 
             Console.WriteLine("111    +     222      =     333\n +            +              +\n333    +     444      =     777\n =            =              =\n444    +     666      =     1100");
+            Console.WriteLine();
             Console.ReadKey();
+
         }
     }
 }
