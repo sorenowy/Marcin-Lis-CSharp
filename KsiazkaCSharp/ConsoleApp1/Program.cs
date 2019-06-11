@@ -27,18 +27,32 @@ namespace ConsoleApp1
         {
             y = wspY;
         } */
-        private double sinusalfa;
-        private double r;
+        private double x;
+        private double y;
 
-        public int PobierzX()
+        public int PobierzR()
         {
-            double x = r * Math.Sqrt(1-sinusalfa * sinusalfa);
-            return (int) x;
+            double r = (x * x + y + y);
+            return (int) r;
         }
-        public int PobierzY()
+        public void UstawR(int wspX)
         {
-            double y = r * sinusalfa;
-            return (int) y;
+            x = wspX;
+            y= 
+        }
+        public int PobierzSinusalfa()
+        {
+            double sinusalfa = y / r
+        }
+        public void UstawSinusalfa(int wspY)
+        {
+            y = wspY;
+            x=
+        }
+        public void PrezentujKlase()
+        {
+            Console.WriteLine("Punkt okreslony w działach kartezjańskich wynosi:");
+
         }
     }
     class Program
@@ -52,6 +66,7 @@ namespace ConsoleApp1
             Console.WriteLine(punkt1.PobierzY());
             Console.ReadKey();
             Console.Clear();*/
+
 
         }
     }
