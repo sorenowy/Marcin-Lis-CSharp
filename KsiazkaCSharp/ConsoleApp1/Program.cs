@@ -97,22 +97,72 @@ namespace ConsoleApp1
         }
 
     }
+    class Example // Zadanie 21.5
+    {
+        private int[] tablica = new int[10];
+
+        private int a()
+        {
+            return -1;
+        }
+        public void b(int index, int wartosc)
+        {
+            try
+            {
+                tablica[index] = wartosc;
+                a();
+                Console.WriteLine("Została wywołana metoda a i b");
+            }
+            catch (IndexOutOfRangeException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            
+
+        }
+    }
     class Program
     {
         static void Main(string[] args)
         {
-            int index, wartosc;
-            Tablica t1 = new Tablica();
-            Tablica t2 = new Tablica();
-            Tablica t3 = new Tablica();
-            Console.WriteLine("podaj wartosc dla pierwszej tablicy");
-            Console.WriteLine("którą tablicę chcesz wypelnic?");
-            t1.Testuj(int.Parse(Console.ReadLine()), int.Parse(Console.ReadLine()));
-            Console.WriteLine(t1.WystapienieBledu);
-            t2.Testuj(int.Parse(Console.ReadLine()), int.Parse(Console.ReadLine()));
-            Console.WriteLine(t2.WystapienieBledu);
-            t3.Testuj(int.Parse(Console.ReadLine()), int.Parse(Console.ReadLine()));
-            Console.WriteLine(t3.WystapienieBledu);
+            /*
+            Tablica t1 = new Tablica(); // Zadanie 21.4
+            t1.Testuj(5, 4);
+            if (t1.WystapienieBledu == true) // Zadanie 21.3
+            {
+                Console.WriteLine("Metoda została wywołana poprawnie");
+            }
+            else
+            {
+                Console.WriteLine("Metoda nie została wywołana");
+            } */
+            
+            try
+            {
+                int a, b;
+                Example e1 = new Example();
+                Console.WriteLine("Podaj wartość dla pierwszej tablicy");
+                a = int.Parse(Console.ReadLine());
+                b = int.Parse(Console.ReadLine());
+                e1.b(a, b);
+                Console.WriteLine("Podaj wartosc dla drugiej tablicy");
+                Example e2 = new Example();
+                a = int.Parse(Console.ReadLine());
+                b = int.Parse(Console.ReadLine());
+                e2.b(a,b);
+            }
+            catch (ArgumentNullException)
+            {
+                Console.WriteLine("wez cos kurwa wpisz");
+            }
+            catch (OverflowException)
+            {
+                Console.WriteLine("Pomyłka za duzo213");
+            }
+            catch(FormatException)
+            {
+                Console.WriteLine("Zjebałeś format chujcu");
+            }
             Console.ReadKey();
         }
     }
