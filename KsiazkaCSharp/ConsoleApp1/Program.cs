@@ -10,7 +10,18 @@ namespace ConsoleApp1
     {
         public void Metoda(string tekst)
         {
-            if ()
+            if (tekst.Contains("a") || tekst.Contains("b") || tekst.Contains("c") == true)
+            {
+                string tekst1;
+                tekst1 = tekst.Replace('a', 'k');
+                tekst1 += tekst.Replace('b', 'h');
+                tekst1 += tekst.Replace('c', 'j');
+                Console.WriteLine(tekst1);
+            }
+            else Console.WriteLine(tekst);
+            /* tekst = tekst.Replace('b', 'j');
+             tekst = tekst.Replace('c', 'i');
+             Console.WriteLine(tekst); */
         }
         static void Main(string[] args)
         {
@@ -36,7 +47,8 @@ namespace ConsoleApp1
                     Console.WriteLine("\n");
                 }
             }
-
+            Program p1 = new Program();
+            p1.Metoda("abc");
             Console.ReadKey();
         }
     }
