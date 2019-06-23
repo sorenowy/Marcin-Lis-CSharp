@@ -8,7 +8,7 @@ namespace ConsoleApp1
 {
     class GeneralException : Exception // Zadanie 23.4
     {
-        public GeneralException(string msg) : base(msg)
+        public GeneralException(String msg) : base(msg)
         {
 
         }
