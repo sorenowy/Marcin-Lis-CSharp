@@ -10,15 +10,8 @@ namespace ConsoleApp1
     {
         public void Metoda(string tekst)
         {
-            if (tekst.Contains("a") || tekst.Contains("b") || tekst.Contains("c") == true)
-            {
-                string tekst1;
-                tekst1 = tekst.Replace('a', 'k');
-                tekst1 += tekst.Replace('b', 'h');
-                tekst1 += tekst.Replace('c', 'j');
-                Console.WriteLine(tekst1);
-            }
-            else Console.WriteLine(tekst);
+            tekst = tekst.Replace('a', 'i').Replace('b', 'j').Replace('c', 'k');
+            Console.WriteLine(tekst);
             /* tekst = tekst.Replace('b', 'j');
              tekst = tekst.Replace('c', 'i');
              Console.WriteLine(tekst); */
