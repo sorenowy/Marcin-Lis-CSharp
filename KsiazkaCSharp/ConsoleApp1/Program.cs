@@ -38,11 +38,20 @@ namespace ConsoleApp1
             Console.WriteLine("Ile podkatalogow chcesz utworzyc??");
             int liczba = int.Parse(Console.ReadLine());
             DirectoryInfo di = new DirectoryInfo(katalog);
-            
+            FileInfo fi;
+
             for (int i = 0; i < liczba; i++)
             {
                 Console.WriteLine("Podaj nazwę subkatalogu dla {0} podkatalogu", i + 1);
-                di.CreateSubdirectory(Console.ReadLine());
+                di.CreateSubdirectory(Console.ReadLine());  
+            }
+            Console.WriteLine("Utwórz plik w katalogu domyslnym! Podaj nazwe:");
+            string plik = Console.ReadLine();
+            fi = new FileInfo(plik);
+            if(!fi.Exists)
+            {
+                FileStream fs;
+                fs = fi.Create();
             }
             Console.WriteLine("Czy chcesz dokonać wyszukiwania? Wciśnij (t) aby szukać, lub inny klawisz, aby przejść dalej");
             klawisz = Console.ReadKey();
@@ -61,26 +70,14 @@ namespace ConsoleApp1
             klawisz = Console.ReadKey();
             if (klawisz.Key == ConsoleKey.T)
             {
-                FileSystemInfo[] informacja = di.GetFileSystemInfos(); // deklaracja i inicjalizacja
+                FileSystemInfo[] informacja = di.GetFileSystemInfos();// deklaracja i inicjalizacja
                 foreach (FileSystemInfo info in informacja)
                     {
-                         Console.Write(" ",info.FullName);
-                    }
-                Console.WriteLine("czy chcesz usunąć plik lub katalog w scieżce?. Wciśnij (t) aby kontynuować.");
-                klawisz = Console.ReadKey();
-                if(klawisz.Key = ConsoleKey.T)
-                    {
-                        Console.WriteLine("Wprowadź nazwę pliku lub katalogu w celu jego usunięcia.");
-                        nazwa = Console.ReadLine();
-                        Console.WriteLine("czy chcesz usunac katalog {0} Wciśnij (t) aby kontynuować.Esc aby zakończyć",nazwa);
-                        klawisz = Console.ReadKey();
-                        if (klawisz.Key == ConsoleKey.Escape)
-                            {
-                                return;
-                            }
-                        else nazwa.Delete();
-                    }
+                         Console.WriteLine(info);
+                    }      
             }
+
+                                 
             Console.ReadKey();
         }
     }
