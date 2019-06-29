@@ -11,8 +11,28 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            string katalog;
+            /* Console.WriteLine("Zawartość katalogu bieżacego:"); // ZADANIE 26.1 (Program pobierajacy i ustawiajacy settery nt. katalogu, zrodla, czas utworzenia katalogu.//
+                DirectoryInfo di = new DirectoryInfo(".");
+                DirectoryInfo[] katalogi = di.GetDirectories();
+                Console.WriteLine("Zródło katalogu: "+di.Attributes);
+                Console.WriteLine("Nadrzędny katalog: " + di.Parent); // Master
+                Console.WriteLine("Czas utworzenia katalogu: " + di.CreationTime); // Pobiera czas utworzenia
+                di.CreateSubdirectory("kurwa"); // Tworze podkatalog
+                FileInfo[] pliki = di.GetFiles();
+                Console.WriteLine("===PODKATALOGI===");
+                foreach (DirectoryInfo katalog in katalogi) // Pętla do tablicy DirectoryInfo[] - Wypisuje liste katalogow
+                {
+                    Console.WriteLine(katalog.Name);
+                }
+                Console.WriteLine("===PLIKI===");
+                foreach (FileInfo plik in pliki) // Pętla do tablicy FileInfo[] - wypisuje liste plików :)
+                {
+                    Console.WriteLine(plik.Name);
+                }
+                Console.ReadKey(); */
+            string katalog; // Zadanie 26.2
             string nazwa;
+            ConsoleKeyInfo klawisz;
             Console.WriteLine("Podaj nazwę katalogu:");
             katalog = Console.ReadLine();
             
@@ -24,12 +44,23 @@ namespace ConsoleApp1
                 Console.WriteLine("Podaj nazwę subkatalogu dla {0} podkatalogu", i + 1);
                 di.CreateSubdirectory(Console.ReadLine());
             }
-            Console.WriteLine("Podaj nazwe w celu wyszukania, użyj * aby zawężyć pole wyszukiwania:");
-            nazwa = Console.ReadLine();
-            DirectoryInfo[] dire = di.GetDirectories(nazwa);
-            foreach (DirectoryInfo dir in dire)
+            Console.WriteLine("Czy chcesz dokonać wyszukiwania? Wciśnij {{{t}}} aby szukać, lub inny klawisz, aby przejść dalej");
+            klawisz = Console.ReadKey();
+            if(klawisz.Key == ConsoleKey.T);
             {
-                Console.WriteLine(dir.Name);
+                Console.WriteLine("Podaj nazwe w celu wyszukania, użyj * aby zawężyć pole wyszukiwania:");
+                nazwa = Console.ReadLine();
+                DirectoryInfo[] dire = di.GetDirectories(nazwa);
+                foreach (DirectoryInfo dir in dire)
+                {
+                    Console.WriteLine(dir.Name);
+                }
+            }
+            FileSystemInfo[] informacja = di.GetFileSystemInfos(); // deklaracja i inicjalizacja
+            
+            foreach (FileSystemInfo info in informacja)
+            {
+                Console.WriteLine(info.Name);
             }
             Console.WriteLine("Wyszukiwany jest katalog {0} oraz pliki o haśle {1}", katalog, nazwa);
 
