@@ -35,7 +35,6 @@ namespace ConsoleApp1
             ConsoleKeyInfo klawisz;
             Console.WriteLine("Podaj nazwę katalogu:");
             katalog = Console.ReadLine();
-            
             Console.WriteLine("Ile podkatalogow chcesz utworzyc??");
             int liczba = int.Parse(Console.ReadLine());
             DirectoryInfo di = new DirectoryInfo(katalog);
@@ -44,26 +43,29 @@ namespace ConsoleApp1
                 Console.WriteLine("Podaj nazwę subkatalogu dla {0} podkatalogu", i + 1);
                 di.CreateSubdirectory(Console.ReadLine());
             }
-            Console.WriteLine("Czy chcesz dokonać wyszukiwania? Wciśnij {{{t}}} aby szukać, lub inny klawisz, aby przejść dalej");
+            Console.WriteLine("Czy chcesz dokonać wyszukiwania? Wciśnij (t) aby szukać, lub inny klawisz, aby przejść dalej");
             klawisz = Console.ReadKey();
-            if(klawisz.Key == ConsoleKey.T);
+            if (klawisz.Key == ConsoleKey.T)
             {
                 Console.WriteLine("Podaj nazwe w celu wyszukania, użyj * aby zawężyć pole wyszukiwania:");
                 nazwa = Console.ReadLine();
                 DirectoryInfo[] dire = di.GetDirectories(nazwa);
+                Console.WriteLine("Wyszukiwany jest katalog {0} oraz pliki o haśle {1}", katalog, nazwa);
                 foreach (DirectoryInfo dir in dire)
                 {
                     Console.WriteLine(dir.Name);
                 }
             }
-            FileSystemInfo[] informacja = di.GetFileSystemInfos(); // deklaracja i inicjalizacja
-            
-            foreach (FileSystemInfo info in informacja)
+            Console.WriteLine("Czy chcesz wyświetlić zawartość folderu głównego??. Wcisnij (t) aby wyświetlić, lub inny klawisz aby zakończyć program.") // 26.3
+            klawisz = Console.ReadKey();
+            if (klawisz.Key == ConsoleKey.T)
             {
-                Console.WriteLine(info.Name);
+                FileSystemInfo[] informacja = di.GetFileSystemInfos(); // deklaracja i inicjalizacja
+                foreach (FileSystemInfo info in informacja)
+                    {
+                         Console.Write(" ",info.FullName);
+                    }
             }
-            Console.WriteLine("Wyszukiwany jest katalog {0} oraz pliki o haśle {1}", katalog, nazwa);
-
             Console.ReadKey();
         }
     }
