@@ -38,6 +38,7 @@ namespace ConsoleApp1
             Console.WriteLine("Ile podkatalogow chcesz utworzyc??");
             int liczba = int.Parse(Console.ReadLine());
             DirectoryInfo di = new DirectoryInfo(katalog);
+            
             for (int i = 0; i < liczba; i++)
             {
                 Console.WriteLine("Podaj nazwę subkatalogu dla {0} podkatalogu", i + 1);
@@ -56,7 +57,7 @@ namespace ConsoleApp1
                     Console.WriteLine(dir.Name);
                 }
             }
-            Console.WriteLine("Czy chcesz wyświetlić zawartość folderu głównego??. Wcisnij (t) aby wyświetlić, lub inny klawisz aby zakończyć program.") // 26.3
+            Console.WriteLine("Czy chcesz wyświetlić zawartość folderu głównego??. Wcisnij (t) aby wyświetlić, lub inny klawisz aby zakończyć program."); // 26.3
             klawisz = Console.ReadKey();
             if (klawisz.Key == ConsoleKey.T)
             {
@@ -64,6 +65,20 @@ namespace ConsoleApp1
                 foreach (FileSystemInfo info in informacja)
                     {
                          Console.Write(" ",info.FullName);
+                    }
+                Console.WriteLine("czy chcesz usunąć plik lub katalog w scieżce?. Wciśnij (t) aby kontynuować.");
+                klawisz = Console.ReadKey();
+                if(klawisz.Key = ConsoleKey.T)
+                    {
+                        Console.WriteLine("Wprowadź nazwę pliku lub katalogu w celu jego usunięcia.");
+                        nazwa = Console.ReadLine();
+                        Console.WriteLine("czy chcesz usunac katalog {0} Wciśnij (t) aby kontynuować.Esc aby zakończyć",nazwa);
+                        klawisz = Console.ReadKey();
+                        if (klawisz.Key == ConsoleKey.Escape)
+                            {
+                                return;
+                            }
+                        else nazwa.Delete();
                     }
             }
             Console.ReadKey();
