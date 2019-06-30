@@ -39,19 +39,21 @@ namespace ConsoleApp1
             int liczba = int.Parse(Console.ReadLine());
             DirectoryInfo di = new DirectoryInfo(katalog);
             FileInfo fi;
-
+            di.Create();
+            
             for (int i = 0; i < liczba; i++)
             {
-                Console.WriteLine("Podaj nazwę subkatalogu dla {0} podkatalogu", i + 1);
+                Console.WriteLine("Podaj nazwę katalogu dla {0} podkatalogu", i + 1);
                 di.CreateSubdirectory(Console.ReadLine());  
             }
             Console.WriteLine("Utwórz plik w katalogu domyslnym! Podaj nazwe:");
             string plik = Console.ReadLine();
             fi = new FileInfo(plik);
-            if(!fi.Exists)
+            if(di.Exists)
             {
-                FileStream fs;
-                fs = fi.Create();
+                FileStream fs = fi.Create();
+                fi.a
+                fs.Close();
             }
             Console.WriteLine("Czy chcesz dokonać wyszukiwania? Wciśnij (t) aby szukać, lub inny klawisz, aby przejść dalej");
             klawisz = Console.ReadKey();
@@ -60,10 +62,15 @@ namespace ConsoleApp1
                 Console.WriteLine("Podaj nazwe w celu wyszukania, użyj * aby zawężyć pole wyszukiwania:");
                 nazwa = Console.ReadLine();
                 DirectoryInfo[] dire = di.GetDirectories(nazwa);
+                FileInfo[] katalogplikow = di.GetFiles(nazwa);
                 Console.WriteLine("Wyszukiwany jest katalog {0} oraz pliki o haśle {1}", katalog, nazwa);
                 foreach (DirectoryInfo dir in dire)
                 {
                     Console.WriteLine(dir.Name);
+                }
+                foreach (FileInfo kat in katalogplikow)
+                {
+                    Console.WriteLine(kat.Name);
                 }
             }
             Console.WriteLine("Czy chcesz wyświetlić zawartość folderu głównego??. Wcisnij (t) aby wyświetlić, lub inny klawisz aby zakończyć program."); // 26.3
@@ -74,10 +81,26 @@ namespace ConsoleApp1
                 foreach (FileSystemInfo info in informacja)
                     {
                          Console.WriteLine(info);
-                    }      
+                    }
+                Console.WriteLine(fi.Length); // Zadanie 25.6
             }
-
-                                 
+            if (fi.Exists)
+            {
+                Console.WriteLine("czy chcesz usunąć plik?. Wciśnij (t) aby kontynuować. Inny klawisz aby zakończyć program.");
+                klawisz = Console.ReadKey();
+                if (klawisz.Key == ConsoleKey.T)
+                {
+                    Console.WriteLine("Podaj nazwe pliku w celu jego usunięcia.");
+                    string fileName = Console.ReadLine();
+                    Console.WriteLine("Chcesz usunąć plik {0}?? Wciśnij (t) aby potwierdzić. Inny klawisz aby zakonczyc program.",fileName);
+                    klawisz = Console.ReadKey();
+                    if (klawisz.Key == ConsoleKey.T)
+                    {
+                        fi.Delete();
+                        Console.WriteLine("Plik {0}, został usunięty. Dziękuję!",fileName);
+                    }
+                }
+            }
             Console.ReadKey();
         }
     }
