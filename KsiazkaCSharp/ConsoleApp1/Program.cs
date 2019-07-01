@@ -11,7 +11,7 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            string plik;
+            string plik; // Zadanie 27.1 i 27.3
             int ile;
             Console.WriteLine("Podaj nazwę scieżki docelowej dla pliku!");
             plik = Console.ReadLine();
@@ -46,6 +46,35 @@ namespace ConsoleApp1
             }
             fs.Close();
             Console.WriteLine("Zapis został dokonany!:)");
+
+            FileStream fo;
+            try
+            {
+                fo = new FileStream(plik, FileMode.Open);
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Otwarcie pliku {0} nie powiodło się!", plik);
+                return;
+            }
+            try
+            {
+                fo.Read(dane, 0, ile);
+                fo.Close();
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Odczyt nie został dokonany!");
+            }
+            Console.WriteLine("Z pliku {0} odczytano nastepujace dane !",plik);
+            for (int j = 0; j < ile; j++)
+            {
+                Console.Write($"[{j}] = {dane[j]}  ");
+                if (j %50 == 0)
+                {
+                    Console.WriteLine("\n");
+                }
+            }
             Console.ReadKey();
         }
     }
