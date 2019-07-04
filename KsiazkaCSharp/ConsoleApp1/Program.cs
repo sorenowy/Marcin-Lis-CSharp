@@ -17,6 +17,20 @@ namespace ConsoleApp1
             plik = Console.ReadLine();
             Console.WriteLine("jaki rozmiar tablicy chces zadeklarować ??");
             ile = int.Parse(Console.ReadLine());
+            /* byte dane = ile; // Zadanie 27.2
+             * FileStream fs;
+            try{
+            fs = new FileStream(plik,FileMode.Create);
+            }
+            catch (Exception)
+            { Console.WriteLine("Błąd!");
+            }
+            try{
+            fs.WriteByte(dane);}
+            catch (Exception)
+            { Console.WriteLine("KurwA!");
+            }
+            Console.WriteLine("Zapis został dokonany!"); */
             byte[] dane = new byte[ile];
             for (int i = 0; i < ile; i++)
             {
@@ -25,7 +39,7 @@ namespace ConsoleApp1
                 else
                     dane[i] = 255;
             }
-            FileStream fs;
+            FileStream fs; // Tworzenie utworzonego pliku :)
             try
             {  
                 fs = new FileStream(plik, FileMode.Create);  
@@ -47,7 +61,7 @@ namespace ConsoleApp1
             fs.Close();
             Console.WriteLine("Zapis został dokonany!:)");
 
-            FileStream fo;
+            FileStream fo; // Otwieranie utworzonego pliku :)
             try
             {
                 fo = new FileStream(plik, FileMode.Open);
@@ -74,6 +88,26 @@ namespace ConsoleApp1
                 {
                     Console.WriteLine("\n");
                 }
+            }
+            StreamReader sr; // Zadanie 27.4
+            try
+            {
+                sr = new StreamReader(@"C:\Test1\Tekst.txt");
+                Console.WriteLine();
+                //Console.WriteLine(sr.ReadToEnd()); // Zadanie 27.4 
+                int i = 0;
+                string linia;
+                while ((linia =sr.ReadLine()) != null) // Zadanie 27.5
+                {  
+                    Console.Write(++i + " ");
+                    Console.WriteLine(sr.ReadLine());
+                    Console.WriteLine(linia);
+                }
+                
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Odczyt nie został dokonany!");
             }
             Console.ReadKey();
         }
