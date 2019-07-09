@@ -26,6 +26,10 @@ namespace ConsoleApp1
     {
         private int x;
         private int y;
+        public Punkt()
+        {
+
+        }
         public Punkt(int wspX,int wspY)
         {
             this.x = wspX;
@@ -37,6 +41,19 @@ namespace ConsoleApp1
         }
 
     }
+    class Punkt3D : Punkt
+    {
+        public int z;
+        public Punkt3D()
+        {
+
+        }
+        public Punkt3D(int wspX,int wspY,int wspZ): base(wspX, wspY)
+        {
+            this.z = wspZ;
+        }
+    }
+    
     class Program
     {
         static void Main(string[] args)
@@ -57,7 +74,15 @@ namespace ConsoleApp1
 
             Punkt punkt1 = new Punkt(5, 6); // Zadanie 28.3
             Console.WriteLine(punkt1);
-            Console.ReadKey();
+
+            Punkt punkt2 = new Punkt3D(); // Zadanie 28.5
+            Punkt3D punkt3d1 = (Punkt3D)punkt2;
+            punkt3d1.z = 10;
+
+            
+            
+
+
         }
     }
 }
