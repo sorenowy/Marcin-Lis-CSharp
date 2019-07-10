@@ -75,9 +75,14 @@ namespace ConsoleApp1
             Punkt punkt1 = new Punkt(5, 6); // Zadanie 28.3
             Console.WriteLine(punkt1);
 
-            Punkt punkt2 = new Punkt3D(); // Zadanie 28.5
-            Punkt3D punkt3d1 = (Punkt3D)punkt2;
-            punkt3d1.z = 10;
+            Punkt punkt2 = (Punkt) new Punkt3D(); // Zadanie 28.5
+            Punkt3D s = (Punkt3D) punkt2;
+            s.z = 10;
+            Console.WriteLine(s.z);
+            Console.ReadKey();
+            
+     
+            
 
             
             
