@@ -73,11 +73,20 @@ namespace ConsoleApp1
             rectangles.Set(2, new Rectangle());
             for (int i = 0; i < rectangles.Length; i++)
             {
-                if (rectangles is Object)
+                if (rectangles is Tablica)
                 {
-                    Console.WriteLine("Chuj :D");
+                    Console.WriteLine("Jest to obiekt :D");
                 }
                 ((Triangle)rectangles.Get(i)).Diagonal();
+            }
+            Console.WriteLine();
+            Klasa<Object> klasa = new Klasa<Object>(5);
+            klasa.setItem(0, 3.14);
+            klasa.setItem(1, "kurwa");
+            klasa.setItem(2, 2323);
+            for (int i = 0; i < klasa.Length; i++)
+            {
+                Console.WriteLine(klasa.getItem(i));
             }
             Console.ReadKey();
         }
