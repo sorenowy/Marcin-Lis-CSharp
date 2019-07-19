@@ -8,12 +8,23 @@ namespace ConsoleApp1
 {
     class Triangle
     {
-    }
-    class Rectangle
-    {
         public void Diagonal()
         {
-
+            Console.WriteLine("Diagonal Triangle");
+        }
+    }
+    class Rectangle :Triangle
+    {
+        public new void Diagonal()
+        {
+            Console.WriteLine("Diagonal Rectangle");
+        }
+    }
+    class Circle : Triangle
+    {
+        public new void Diagonal()
+        {
+            Console.WriteLine("Diagonal Circle:");
         }
     }
 }

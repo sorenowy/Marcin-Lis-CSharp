@@ -19,7 +19,7 @@ namespace ConsoleApp1
         }
         public int Get(int index)
         {
-            if(index>=tab.Length || index < 0)
+            if (index >= tab.Length || index < 0)
             {
                 throw new IndexOutOfRangeException("Index = " + index);
             }
@@ -28,7 +28,7 @@ namespace ConsoleApp1
                 return tab[index];
             }
         }
-        public void Set(int index,int value)
+        public void Set(int index, int value)
         {
             if (index < 0)
             {
@@ -68,12 +68,16 @@ namespace ConsoleApp1
                 Console.WriteLine($"Tablica {i} zawiera {tablica.Get(i)}");
             }
             Tablica rectangles = new Tablica(3);
-            rectangles.Set(3, new Triangle());
-            rectangles.Set(4, new Triangle());
+            rectangles.Set(0, new Triangle());
+            rectangles.Set(1, new Triangle());
             rectangles.Set(2, new Rectangle());
-            for (int i = 0; i < tablica.Length; i++)
+            for (int i = 0; i < rectangles.Length; i++)
             {
-                ((Rectangle)rectangles.Get(i)).Diagonal();
+                if (rectangles is Object)
+                {
+                    Console.WriteLine("Chuj :D");
+                }
+                ((Triangle)rectangles.Get(i)).Diagonal();
             }
             Console.ReadKey();
         }
