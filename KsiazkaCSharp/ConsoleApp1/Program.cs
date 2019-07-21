@@ -67,9 +67,9 @@ namespace ConsoleApp1
             Console.ReadKey();
             Console.WriteLine("@@");
             KlasaZadaniowa kz = new KlasaZadaniowa();
-            kz.OnCalkowita += OnCalkowitaKomunikat;
+            kz.OnCalkowita += OnCalkowitaKomunikat;       
             kz.OnRzeczywista += OnRzeczywistaKomunikat;
-            kz.MetodaZadania("3,5");
+            kz.MetodaZadania("kurwa");
             kz.MetodaZadania("5");
             Console.WriteLine();
             Console.ReadKey();

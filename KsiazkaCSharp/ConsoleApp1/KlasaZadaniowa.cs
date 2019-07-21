@@ -30,7 +30,7 @@ namespace ConsoleApp1
             }
             catch (FormatException)
             {
-
+                Console.WriteLine("Nie wpisałeś liczby!");
             }
 
 
